@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        
+    </head>
+
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            background-color: pink;
+
+        }
+
+        .headings h1{
+            text-align: center;
+            font-size: 45px;
+            letter-spacing: 5px;
+
+        }
+        .commands{
+            text-align: center;
+            color: darkblue;
+        }
+        .cmd{
+            font-weight: bold;
+            font-size: 30px;
+            word-spacing: 10px;
+        }
+        .commands input{
+            background-color: darkblue;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            padding-left: 25px;
+            border-radius: 40px;
+            height: 45px;
+            width: 300px;
+            border: 2px solid rgb(87, 117, 176);
+        }
+        ::placeholder{
+            color: rgb(181, 177, 177);
+            opacity: 1;
+        }
+        .runbtn{
+            background-color:green;
+            width:120px;
+            height:47px;
+            border-radius: 25px;
+            border-color: greenyellow;
+            cursor: pointer;
+            color:white;
+            font-weight:bold;
+            font-size:20px;
+        }
+
+        .result-area{
+            color: white;
+            background-color: darkblue;
+            font-family:verdana;
+            font-size:25px;
+            padding-left: 10px;
+            border:2px solid darkblue;
+            margin: 0 20px;
+            overflow: scroll;
+        }
+    </style>
+
+<body>
+    <div class="content">
+        <div class="headings">
+            <div class="navbar">
+                <h1>Team Yugam</h1>
+            </div>
+             <div class="commands">
+                    <span class="cmd">CMD : <span>
+                        <input type="text" id="in1" placeholder="Enter any commands" >
+                        <button class="runbtn" type="submit" onclick="lw()">Run</button>
+                    </div>
+        </div>
+
+
+        <div class="resultbox">
+
+            <pre>
+                <div id="p1" class="result-area"> </div>
+            </pre>
+
+        </div>
+
+        </div>
+
+        <!-- Javascript  -->
+    <script>
+        function lw() {
+            var xhr = new XMLHttpRequest();
+
+
+            var mycmd = document.getElementById("in1").value;
+
+            // True: Async Request to BE
+            xhr.open("GET", "http://13.233.225.249/cgi-bin/lw.py?c=" + mycmd, true);
+            xhr.send();
+            xhr.onreadystatechange = function () {
+
+// 4 : if reponse comes from server, then only go and receive
+if (xhr.readyState == 4) {
+    document.getElementById("p1").innerHTML = this.responseText;
+}
+}
+
+}
+</script>
+
+</body>
+
+</html>

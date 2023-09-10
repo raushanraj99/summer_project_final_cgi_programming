@@ -1,0 +1,50 @@
+#!/usr/bin/python3
+
+import subprocess
+import cgi
+
+import os
+
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from email.mime.application import MIMEApplication
+
+# Email configuration
+sender_email = 'sender_email'
+sender_password = 'sender_password'
+subject = 'Summer internship Jaipur Email'
+message = 'Are you coming in Jaipur.'
+#you can add any number of email to send the message at a time
+recipient_list = ['receiver_gmail1', 'receiver_gmail2','receiver_gmail3']
+
+# Create the email
+msg = MIMEMultipart()
+msg['From'] = sender_email
+msg['To'] = ', '.join(recipient_list)
+msg['Subject'] = subject
+
+#!/usr/bin/python3
+
+import subprocess
+import cgi
+
+import os
+
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from email.mime.application import MIMEApplication
+
+# Email configuration
+sender_email = 'sender_email'
+sender_password = 'sender_password'
+subject = 'Summer internship Jaipur Email'
+message = 'Are you coming in Jaipur.'
+recipient_list = ['receiver_email1', 'receiver_email2','receiver_email3']
+
+# Create the email
+msg = MIMEMultipart()
+msg['From'] = sender_email
+msg['To'] = ', '.join(recipient_list)
+msg['Subject'] = subject

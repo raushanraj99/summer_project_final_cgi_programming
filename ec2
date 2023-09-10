@@ -1,0 +1,20 @@
+#!/usr/bin/python3
+
+#import boto3
+import sys
+
+import subprocess as s
+if sys.argv[1]=="-c":
+    out=s.getoutput("aws ec2 run-instances --image-id ami-0da59f1af71ea4ad2  --instance-typee
+ t2.micro --count "+sys.argv[2])
+    print("Successfully " + sys.argv[2]+" Instance Launched: ")
+
+if sys.argv[1]=="ls":
+    out= s.getoutput("aws ec2 describe-instances --filters 'Name=instance-type,Values=t2.micc
+ro' --query 'Reservations[].Instances[].InstanceId[]'")
+
+    print(out)
+
+if sys.argv[1]=="-d":
+    out =s.getoutput("aws ec2 terminate-instances --instance-ids "+ sys.argv[2])
+    print("Successfully Deleted:")

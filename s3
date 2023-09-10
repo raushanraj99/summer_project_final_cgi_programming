@@ -1,0 +1,27 @@
+#!/usr/bin/python3
+import cgi
+import boto3
+import sys
+
+session_aws=boto3.Session(aws_access_key_id="Your_access_id", aws_secret_access_key= ""
+Your_access_key",region_name= "ap-south-1")
+S3 = session_aws.client('s3')
+if sys.argv[1]=="-n":
+    response = S3.create_bucket(
+        ACL = 'private',
+        Bucket= sys.argv[2],
+        CreateBucketConfiguration={
+              "LocationConstraint":"ap-south-1"
+     }
+              )
+    if response:
+        print("Successfully Created:")
+
+elif sys.argv[1]=="ls":
+    list= S3.list_buckets()
+    for bucket in list["Buckets"]:
+        print(bucket["Name"])
+elif sys.argv[1]=="-d":
+    delete= S3.delete_bucket(Bucket=sys.argv[2])
+    if delete:
+        print("Successfully Deleted:")
